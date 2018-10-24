@@ -21,11 +21,6 @@ const items = (state = [], action) => {
       );
     case "DELETE_ALL":
       return [];
-    case "OPEN_ITEM":
-      return state.map(
-        item =>
-          item.id === action.id ? { ...item, completed: !item.completed } : item
-      );
     default:
       return state;
   }

@@ -1,16 +1,20 @@
-import { connect } from 'react-redux'
-import { setVisibilityFilter } from '../actions'
-import Button from '../components/Button'
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './../styles/index.css';
 
-const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.visibilityFilter
-})
+const styles = [ 'container__btn_combined', 'container__btn_regular' ];
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => dispatch(setVisibilityFilter(ownProps.filter))
-})
+const FilterLink = ({ filter, children }) => (
+	<NavLink
+		className="container__btn container__btn_regular"
+		to={filter === 'all_tasks' ? '/' : `/${filter}`}
+		activeStyle={{
+			opacity: '1',
+			filter: 'hue-rotate(235deg)'
+		}}
+	>
+		{children}
+	</NavLink>
+);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Button)
+export default FilterLink;

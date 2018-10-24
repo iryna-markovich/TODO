@@ -30,6 +30,7 @@ body {
   margin: 0.5rem 0;
 }
 .container__btn {
+  text-decoration: none;
   padding: 15px 20px;
   border-radius: 3px;
   outline: none;
@@ -45,6 +46,9 @@ body {
   color: #6c94a7;
 }
 .container__btn_regular {
+  background: #def7ef;
+  border: 1px solid #3ab48a;
+  color: #3ab48a;
 }
 .container__btn_danger {
   background: #ffeae9;
