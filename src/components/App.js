@@ -3,8 +3,8 @@ import Controls from "./Controls";
 import Field from "./Field";
 import VisibleTodoList from "../containers/VisibleTodoList";
 import "./../styles/index.css";
-import DeletePostModal from "./DeletePostModal";
-import ItemWindow from "./ItemWindow";
+import ModalSwitch from './../modal';
+
 
 const App = () => (
   <div className="container">
@@ -13,9 +13,7 @@ const App = () => (
     <Controls />
     <Field />
     <VisibleTodoList />
-    <DeletePostModal />
-    <ItemWindow />
-
+    <ModalSwitch />
   </div>
 );
 
