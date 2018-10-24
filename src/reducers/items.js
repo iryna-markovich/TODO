@@ -1,4 +1,4 @@
-const actionReducer = (state = [], action) => {
+const items = (state = [], action) => {
   switch (action.type) {
     case "ADD_ITEM":
       return [
@@ -15,12 +15,20 @@ const actionReducer = (state = [], action) => {
           item.id === action.id ? { ...item, completed: !item.completed } : item
       );
     case "DELETE_ITEM":
-      return;
+      return state.map(
+        item =>
+          item.id === action.id ? { ...item, completed: !item.completed } : item
+      );
     case "DELETE_ALL":
-      return;
+      return [];
+    case "OPEN_ITEM":
+      return state.map(
+        item =>
+          item.id === action.id ? { ...item, completed: !item.completed } : item
+      );
     default:
       return state;
   }
 };
 
-export default actionReducer;
+export default items;

@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
-import actionReducer from "./actionReducer";
-import filtersReducer from "./filtersReducer";
+import { combineReducers } from 'redux'
+import items from './items'
+import visibilityFilter from './visibilityFilter'
 
 export default combineReducers({
-  actionReducer,
-  filtersReducer
-});
+  items,
+  visibilityFilter
+})
