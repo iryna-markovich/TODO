@@ -1,20 +1,12 @@
 import React from "react";
 import { render } from "react-dom";
-import { createStore } from "redux";
-import todoApp from "./reducers";
 import Root from "./components/Root";
-import { loadState, saveState } from "./localStorage";
+import configureStore from "./configureStore";
 
-const persistedState = loadState();
+//import { fetchItems } from "./api";
 
-const store = createStore(
-  todoApp,
-  persistedState,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+//fetchItems("all_tasks").then(items => console.log(items));
 
-store.subscribe(() => {
-  saveState(store.getState());
-});
+const store = configureStore();
 
 render(<Root store={store} />, document.getElementById("root"));

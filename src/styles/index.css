@@ -34,7 +34,7 @@ body {
     flex-direction: column;
   }
 }
-.container__subtitle{
+.container__subtitle {
   margin: 0.5rem 0;
 }
 .container__btn {

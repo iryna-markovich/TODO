@@ -1,6 +1,5 @@
 import React from "react";
 import FilterLink from "../containers/FilterLink";
-import { VisibilityFilters } from "../actions";
 import { deleteAll } from "../actions";
 import { connect } from "react-redux";
 import "./../styles/index.css";
@@ -8,9 +7,9 @@ import "./../styles/index.css";
 const Controls = ({ dispatch }) => (
   <div className="container__controls">
     <span className="container__subtitle">Show: </span>
-    <FilterLink filter={VisibilityFilters.SHOW_ALL}>All</FilterLink>
-    <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>Active</FilterLink>
-    <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>Completed</FilterLink>
+    <FilterLink filter="all_tasks">All</FilterLink>
+    <FilterLink filter="active_tasks">Active</FilterLink>
+    <FilterLink filter="complited_tasks">Completed</FilterLink>
     <button
       onClick={e => {
         e.preventDefault();
@@ -22,8 +21,6 @@ const Controls = ({ dispatch }) => (
     </button>
   </div>
 );
-
-//export default Controls;
 
 const mapDispatchToProps = dispatch => ({
   deleteAll: () => dispatch(deleteAll())

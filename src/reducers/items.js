@@ -14,11 +14,6 @@ const items = (state = [], action) => {
         item =>
           item.id === action.id ? { ...item, completed: !item.completed } : item
       );
-    case "DELETE_ITEM":
-      return state.map(
-        item =>
-          item.id === action.id ? { ...item, completed: !item.completed } : item
-      );
     case "DELETE_ALL":
       return [];
     default:
@@ -27,3 +22,16 @@ const items = (state = [], action) => {
 };
 
 export default items;
+
+export const getVisibleTodos = (state, filter) => {
+  switch (filter) {
+    case "all_tasks":
+      return state;
+    case "complited_tasks":
+      return state.filter(t => t.completed);
+    case "active_tasks":
+      return state.filter(t => !t.completed);
+    default:
+      throw new Error(`Unknown filter: + ${filter}`);
+  }
+};
