@@ -7,7 +7,7 @@ import "./../styles/index.css";
 
 const Controls = ({ dispatch }) => (
   <div className="container__controls">
-    <span>Show: </span>
+    <span className="container__subtitle">Show: </span>
     <FilterLink filter={VisibilityFilters.SHOW_ALL}>All</FilterLink>
     <FilterLink filter={VisibilityFilters.SHOW_ACTIVE}>Active</FilterLink>
     <FilterLink filter={VisibilityFilters.SHOW_COMPLETED}>Completed</FilterLink>
