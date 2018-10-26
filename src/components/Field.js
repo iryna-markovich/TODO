@@ -30,4 +30,8 @@ const Field = ({ dispatch }) => {
   );
 };
 
-export default connect()(Field);
+const mapDispatchToProps = dispatch => ({
+  addItem: () => dispatch(addItem())
+});
+
+export default connect(mapDispatchToProps)(Field);

@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "express": "^4.16.4",
+    "file-system": "^2.2.2",
     "immutable": "^3.8.2",
+    "jade": "^1.11.0",
     "local-storage": "^1.4.2",
     "lodash": "^4.17.11",
     "node-uuid": "^1.4.8",
@@ -22,6 +24,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -30,5 +33,16 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "app.js",
+  "devDependencies": {
+    "webpack-dev-middleware": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.godeltech.com:i.markovich/todolist.git"
+  },
+  "author": "",
+  "license": "ISC"
 }

@@ -15,6 +15,7 @@ const mapStateToProps = (
   items: getVisibleTodos(state, filter || "all_tasks")
 });
 
+
 const VisibleTodoList = withRouter(
   connect(
     mapStateToProps,
