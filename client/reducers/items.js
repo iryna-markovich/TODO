@@ -23,7 +23,7 @@ const items = (state = [], action) => {
 
 export default items;
 
-export const getVisibleTodos = (state, filter) => {
+export const getVisibleItems = (state, filter) => {
   switch (filter) {
     case "all_tasks":
       return state;

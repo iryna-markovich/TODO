@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./../styles/index.css";
 import Controls from "./Controls";
 import Field from "./Field";
-import VisibleTodoList from "../containers/VisibleTodoList";
+import VisibleItemsList from "../containers/VisibleItemsList";
 
 class App extends Component {
   /*
@@ -30,7 +30,7 @@ class App extends Component {
         <hr className="container__line" />
         <Controls />
         <Field />
-        <VisibleTodoList />
+        <VisibleItemsList />
       </div>
     );
   }

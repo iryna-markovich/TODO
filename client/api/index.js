@@ -10,7 +10,7 @@ const dataBase = {
 
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-export const fetchTodos = filter =>
+export const fetchItems = filter =>
   delay(500).then(() => {
     switch (filter) {
       case "all_tasks":

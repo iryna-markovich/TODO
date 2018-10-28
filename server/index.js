@@ -1,11 +1,31 @@
-const express = require("express"),
-  bodyParser = require("body-parser"),
-  fs = require("file-system"),
-  dataFile = "items.json",
-  app = express();
+const express = require("express");
+const bodyParser = require("body-parser");
+const path = require("path");
+const fs = require("file-system");
+const dataFile = "items.json";
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+/*
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(express.static(path.resolve(__dirname, '..', 'client')));
+app.use(express.static(path.resolve(__dirname, '..', 'node_modules')));
+
+app.use(function(err, req, res, next) {
+  console.error(err);
+  console.error(err.stack);
+  res.status(err.status || 500).send(err.message || 'Internal server error.');
+});
+
+app.get('*', (request, response) => {
+  response.sendFile(path.resolve(__dirname, '..', 'client', 'index.html'));
+});
+*/
+
 app.get("/api/items", (req, res) => {
   res.send({ items: JSON.parse(fs.readFileSync(dataFile, "utf8")) });
 });

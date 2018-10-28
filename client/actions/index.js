@@ -15,6 +15,12 @@ export const deleteAll = () => ({
   type: "DELETE_ALL"
 });
 
+export const receiveItems = (filter, response) => ({
+  type: "RECEIVE_ITEMS",
+  filter,
+  response
+});
+
 export const VisibilityFilters = {
   SHOW_ALL: "all_tasks",
   SHOW_COMPLETED: "complited_tasks",

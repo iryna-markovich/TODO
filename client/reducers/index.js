@@ -7,5 +7,5 @@ const todoApp = combineReducers({
 
 export default todoApp;
 
-export const getVisibleTodos = (state, filter) =>
-  fromItems.getVisibleTodos(state.items, filter);
+export const getVisibleItems = (state, filter) =>
+  fromItems.getVisibleItems(state.items, filter);
