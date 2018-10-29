@@ -1,5 +1,0 @@
-[
-  { "id": 0, "text": "hello 0", "comlited": true },
-  { "id": 1, "text": "hello 1", "comlited": false },
-  { "id": 2, "text": "hello 2", "comlited": true }
-]
