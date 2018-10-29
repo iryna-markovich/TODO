@@ -20,3 +20,17 @@ export const VisibilityFilters = {
   SHOW_COMPLETED: "completed_tasks",
   SHOW_ACTIVE: "active_tasks"
 };
+
+export const getState = data => ({
+  type: "GET_STATE",
+  data
+});
+
+export const returnState = dispatch => {
+  fetch("/api/items")
+    .then(response => response.json())
+    .then(data => {
+      dispatch(getState(data.items));
+    })
+    .catch(alert);
+};

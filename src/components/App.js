@@ -5,22 +5,6 @@ import Field from "./Field";
 import VisibleTodoList from "../containers/VisibleTodoList";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: []
-    };
-  }
-  componentDidMount = () => {
-    console.log("Will Mount");
-    fetch("api/items")
-      .then(response => response.json())
-      .then(items => {
-        this.setState({ data: items.items });
-        console.log(this.state.data);
-      });
-  };
-
   render() {
     return (
       <div className="container">
@@ -28,7 +12,7 @@ class App extends Component {
         <hr className="container__line" />
         <Controls />
         <Field />
-        <VisibleTodoList data={this.props.data} />
+        <VisibleTodoList />
       </div>
     );
   }
