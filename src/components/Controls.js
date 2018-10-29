@@ -4,6 +4,7 @@ import { deleteAll } from "../actions";
 import { connect } from "react-redux";
 import "./../styles/index.css";
 
+
 const Controls = ({ dispatch }) => (
   <div className="container__controls">
     <span className="container__subtitle">Show: </span>
@@ -22,8 +23,11 @@ const Controls = ({ dispatch }) => (
   </div>
 );
 
+
 const mapDispatchToProps = dispatch => ({
   deleteAll: () => dispatch(deleteAll())
 });
+
+
 
 export default connect(mapDispatchToProps)(Controls);

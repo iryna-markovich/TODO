@@ -1,8 +1,23 @@
 import React from "react";
 import { render } from "react-dom";
-import Root from "./components/Root";
-import configureStore from "./configureStore";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import items  from "./reducers/items";
+import App from "./components/App";
 
-const store = configureStore();
+const initialState = {
+  items: []
+}
 
-render(<Root store={store} />, document.getElementById("root"));
+const store = createStore(
+  items,
+  initialState,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);

@@ -1,5 +1,18 @@
 import { v4 } from "node-uuid";
 
+export const addTodo = () => {
+  return {
+    type: "ADD_TODO"
+  };
+};
+
+export const inputChange = text => {
+  return {
+    type: "INPUT_CHANGE",
+    text
+  };
+};
+
 export const addItem = text => ({
   type: "ADD_ITEM",
   id: v4(),
@@ -33,4 +46,29 @@ export const returnState = dispatch => {
       dispatch(getState(data.items));
     })
     .catch(alert);
+};
+
+export const addToState = (data, dispatch) => {
+  let id = v4();
+  let obj = {
+    id,
+    text: data,
+    completed: false
+  };
+  fetch("/api/items", {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    method: "post",
+    body: JSON.stringify(obj)
+  })
+    .then(function(response) {
+      dispatch(addTodo());
+      return response;
+    })
+    .then(function(data) {
+      returnState(dispatch);
+      console.log(data);
+    });
 };

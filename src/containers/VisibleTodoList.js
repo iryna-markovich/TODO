@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 import List from "../components/List";
 import { getVisibleTodos } from "./../reducers";
 
+
 const mapStateToProps = (
   state,
   {
@@ -14,7 +15,6 @@ const mapStateToProps = (
 ) => ({
   items: getVisibleTodos(state, filter || "all_tasks")
 });
-
 
 const VisibleTodoList = withRouter(
   connect(
