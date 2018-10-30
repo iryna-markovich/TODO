@@ -1,6 +1,6 @@
-const items = (state = {}, action) => {
+const items = (state = [], action) => {
   switch (action.type) {
-    case "ADD_ITEM":
+    case "ADD_TASK":
       return [
         ...state,
         {
@@ -9,17 +9,15 @@ const items = (state = {}, action) => {
           completed: false
         }
       ];
-    case "TOGGLE_ITEM":
+    case "TOGGLE_TASK":
       return state.map(
         item =>
           item.id === action.id ? { ...item, completed: !item.completed } : item
       );
-    case "DELETE_ALL":
+    case "DELETE_TASKS":
       return [];
-    case "GET_STATE":
-      let newState = state.items.slice();
-      newState = action.data;
-      return { ...state, items:newState};
+    case "GET_TASKS":
+      return { ...state, items: action.items };
     default:
       return state;
   }
@@ -27,17 +25,15 @@ const items = (state = {}, action) => {
 
 export default items;
 
-
 export const getVisibleTodos = (state, filter) => {
   switch (filter) {
     case "all_tasks":
       return state;
     case "completed_tasks":
-     return state.filter(t => t.completed);
+      return state.filter(t => t.completed);
     case "active_tasks":
       return state.filter(t => !t.completed);
     default:
       throw new Error(`Unknown filter: + ${filter}`);
   }
 };
-

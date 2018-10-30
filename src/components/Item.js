@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./../styles/index.css";
 
-const Item = ({ onClick, completed, text }) => (
+const Item = ({ id, onClick, completed, text }) => (
   <div className="container__item">
     <p
       className="container__text"
-      onClick={onClick}
+      onClick={() => onClick(id)}
       style={{
         textDecoration: completed ? "line-through" : "none"
       }}

@@ -4,14 +4,16 @@ import PropTypes from "prop-types";
 import Item from "./Item";
 import "./../styles/index.css";
 
-const mapStateToProps = state => ({
-  items: state.items
-});
+const mapStateToProps = state => {
+  return {
+    items: state.items || [],
+  }
+};
 
 const List = ({ items, toggleItem }) => (
   <div className="container__list">
      {items.map(item => (
-      <Item key={item.id} {...item} onClick={() => toggleItem(item.id)} />
+      <Item key={item.id} {...item} onClick={toggleItem} />
     ))}
   </div>
 );
