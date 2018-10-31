@@ -59,14 +59,11 @@ export const removeTasks = (dispatch) => {
     });
 };
 
-
 export const toggleTask = (completed, id, dispatch) => {
-
   let task = {
     completed: !completed,
     id: id
   };
-  console.log(task);
   fetch("/api/items", {
     headers: {
       Accept: "application/json",
@@ -82,10 +79,3 @@ export const toggleTask = (completed, id, dispatch) => {
       getTasks()(dispatch);
     });
 };
-
-
-/*
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter
-})*/

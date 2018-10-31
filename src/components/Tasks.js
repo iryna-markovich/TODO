@@ -6,11 +6,9 @@ import Controls from "./Controls";
 import List from "./List";
 import Field from "./Field";
 
-const mapStateToProps = state => {
-  return {
-    items: state.items || [],
-  }
-};
+const mapStateToProps = state => ({
+  items: state.items || []
+});
 
 const mapDispatchToProps = dispatch => ({
   getTasks: () => {
