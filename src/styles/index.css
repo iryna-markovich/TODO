@@ -92,12 +92,15 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  cursor:pointer;
+  cursor: pointer;
 }
 .container__text {
   margin: 1rem 0;
 }
-.active{
+.active {
   opacity: 1;
   filter: hue-rotate(235deg);
+}
+.done {
+  text-decoration: line-through;
 }

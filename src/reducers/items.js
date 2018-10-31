@@ -14,6 +14,21 @@ const items = (state = [], action) => {
         item =>
           item.id === action.id ? { ...item, completed: !item.completed } : item
       );
+
+    /*
+    case "TOGGLE_TASK":
+      return Object.assign({}, state, {
+        items: state.items.map((item, id) => {
+          if (id === action.id) {
+            return Object.assign({}, item, {
+              completed: !item.completed
+            });
+          }
+          return item;
+        })
+      });
+    */
+
     case "DELETE_TASKS":
       return [];
     case "GET_TASKS":

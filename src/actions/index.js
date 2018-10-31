@@ -1,23 +1,12 @@
 import { v4 } from "node-uuid";
-/*
-export const addTask = text => ({
-  type: "ADD_TASK",
-  id: v4(),
-  text
-});
-*/
-export const toggleTask = id => ({
-  type: "TOGGLE_TASK",
-  id
+
+export const updateTask = completed => ({
+  type: "UPDATE_TASK",
+  completed
 });
 
 export const deleteTasks = () => ({
   type: "DELETE_TASKS"
-});
-
-export const deleteTask = id => ({
-  type: "DELETE_TASK",
-  id
 });
 
 export const getTask = id => ({
@@ -70,8 +59,33 @@ export const removeTasks = (dispatch) => {
     });
 };
 
-export const VisibilityFilters = {
-  SHOW_ALL: "all_tasks",
-  SHOW_COMPLETED: "completed_tasks",
-  SHOW_ACTIVE: "active_tasks"
+
+export const toggleTask = (completed, id, dispatch) => {
+
+  let task = {
+    completed: !completed,
+    id: id
+  };
+  console.log(task);
+  fetch("/api/items", {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    method: "put",
+    body: JSON.stringify(task)
+  })
+    .then(function(response) {
+      return response;
+    })
+    .then(function() {
+      getTasks()(dispatch);
+    });
 };
+
+
+/*
+export const setVisibilityFilter = filter => ({
+  type: 'SET_VISIBILITY_FILTER',
+  filter
+})*/

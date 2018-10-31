@@ -18,13 +18,13 @@ app.post("/api/items", (req, res) => {
   res.send({ item: item });
 });
 
-app.put("/api/items/:id", (req, res) => {
+app.put("/api/items/", (req, res) => {
   const data = JSON.parse(fs.readFileSync(dataFile, "utf8")),
-    id = req.params.id,
+   
     newTask = req.body;
 
   const oldTask = data.find(item => {
-    return item.id === id;
+    return item.id === newTask.id;
   });
 
   for (let key in newTask) {
