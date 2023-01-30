@@ -1,56 +1,63 @@
-const express = require('express'),
-	bodyParser = require('body-parser'),
-	fs = require('file-system'),
-	dataFile = 'items.json',
-	app = express();
+import express from 'express';
+import bodyParser from 'body-parser';
+import fs from 'file-system';
+
+const app = express();
+const dataFile = './items.json';
+const db = JSON.parse(fs.readFileSync('./items.json', 'utf8'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 app.get('/api/items', (req, res) => {
-	res.send({ items: JSON.parse(fs.readFileSync(dataFile, 'utf8')) });
+  res.send({ items: db });
+  res.sendStatus(200);
 });
 
 app.post('/api/items', (req, res) => {
-	const data = JSON.parse(fs.readFileSync(dataFile, 'utf8')),
-		item = req.body;
-	data.push(item);
-	fs.writeFileSync(dataFile, JSON.stringify(data));
-	res.send({ item: item });
+  const item = req.body;
+
+  db.push(item);
+  // add!! not overwrite
+  fs.writeFileSync(dataFile, JSON.stringify(db));
+
+  res.send({ item });
+  res.sendStatus(200);
 });
 
-app.put('/api/items/', (req, res) => {
-	const data = JSON.parse(fs.readFileSync(dataFile, 'utf8')),
-		newTask = req.body;
+app.put('/api/items/:id', (req, res) => {
+  const id = req.params.id;
+  const item = req.body;
 
-	const oldTask = data.find((item) => {
-		return item.id === newTask.id;
-	});
+  const task = db.find((item) => item.id === id);
 
-	for (let key in newTask) {
-		oldTask[key] = newTask[key];
-	}
+  //change to key:value
+  fs.writeFileSync(dataFile, JSON.stringify(db));
+  res.sendStatus(204);
+});
 
-	fs.writeFileSync(dataFile, JSON.stringify(data));
-	res.sendStatus(204);
+app.put('/api/items/:id', (req, res) => {
+  const id = req.params.id;
+  const updatedData = db.filter((item) => item.id !== id);
+
+  fs.writeFileSync(dataFile, JSON.stringify(updatedData));
+  res.sendStatus(204);
 });
 
 app.delete('/api/items/:id', (req, res) => {
-	const data = JSON.parse(fs.readFileSync(dataFile, 'utf8')),
-		id = req.params.id;
+  const id = req.params.id;
 
-	const updatedData = data.filter((item) => {
-		return item.id !== id;
-	});
+  const updatedData = db.filter((item) => item.id !== id);
 
-	fs.writeFileSync(dataFile, JSON.stringify(updatedData));
-	res.sendStatus(204);
+  fs.writeFileSync(dataFile, JSON.stringify(updatedData));
+  res.sendStatus(204);
 });
 
 app.delete('/api/items', (req, res) => {
-	fs.writeFileSync(dataFile, JSON.stringify([]));
-	res.sendStatus(204);
+  fs.writeFileSync(dataFile, JSON.stringify([]));
+  res.sendStatus(204);
 });
 
 app.listen(3001, () => {
-	console.log('Server has been started...');
+  console.log('Server has been started...');
 });
