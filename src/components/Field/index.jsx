@@ -1,10 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { putTask } from './../actions';
+import { putTask } from '../../actions';
+import { Button } from '../../components';
+
+import styles from './index.module.css';
 
 const Field = ({ putTask }) => {
   const [inputValue, setInputValue] = useState('');
-  // TODO use useRef
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -16,11 +19,16 @@ const Field = ({ putTask }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="container__field">
-      <input value={inputValue} className="container__input" type="text" />
-      <button className="container__btn container__btn_combined" type="submit">
+    <form onSubmit={handleSubmit} className={styles.field}>
+      <input
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        className={styles.input}
+        type="text"
+      />
+      <Button variety="regular" type="submit">
         +
-      </button>
+      </Button>
     </form>
   );
 };

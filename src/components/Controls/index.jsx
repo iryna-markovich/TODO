@@ -1,8 +1,10 @@
 import React from 'react';
-import FilterLink from '../containers/FilterLink';
-import { removeTasks } from '../actions';
+import FilterLink from '../../containers/FilterLink.jsx';
+import { removeTasks } from '../../actions';
 import { connect } from 'react-redux';
-import './../styles/index.css';
+import { Button } from '../../components';
+
+import styles from './index.module.css';
 
 const Controls = ({ removeTasks }) => {
   const handleClick = (event) => {
@@ -11,17 +13,14 @@ const Controls = ({ removeTasks }) => {
   };
 
   return (
-    <div className="container__controls">
-      <span className="container__subtitle">Show: </span>
+    <div className={styles.controls}>
+      <span className={styles.subtitle}>Show: </span>
       <FilterLink filter="all_tasks">All</FilterLink>
       <FilterLink filter="active_tasks">Active</FilterLink>
       <FilterLink filter="completed_tasks">Completed</FilterLink>
-      <button
-        onClick={handleClick}
-        className="container__btn container__btn_danger"
-      >
+      <Button variety="danger" onClick={handleClick}>
         Delete All
-      </button>
+      </Button>
     </div>
   );
 };
@@ -34,7 +33,4 @@ const mapDispatchToProps = (dispatch) => ({
   removeTasks: () => removeTasks(dispatch),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Controls);
+export default connect(mapStateToProps, mapDispatchToProps)(Controls);

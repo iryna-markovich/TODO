@@ -1,0 +1,36 @@
+.btn {
+  text-decoration: none;
+  padding: 15px 20px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+
+.danger {
+  background: #ffeae9;
+  border: 1px solid #f44336;
+  color: #f44336;
+}
+
+.combined {
+  background: #d9f1fd;
+  border: 1px solid #6c94a7;
+  color: #6c94a7;
+}
+
+.regular {
+  background: #def7ef;
+  border: 1px solid #3ab48a;
+  color: #3ab48a;
+}
+
+@media (max-width: 500px) {
+  .regular {
+    margin-bottom: 0.5rem;
+  }
+}

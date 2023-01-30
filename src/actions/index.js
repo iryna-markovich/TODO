@@ -24,6 +24,7 @@ export const getTasks = () => (dispatch) => {
 };
 
 export const putTask = (data, dispatch) => {
+  console.log(data)
   let task = {
     text: data,
     completed: false,

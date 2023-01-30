@@ -1,20 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Item from './Item';
-import './../styles/index.css';
+import { Task } from '../../components';
 
-const List = ({ items }) => {
-  return (
-    <div className="container__list">
-      {items.map((item) => (
-        <Item key={item.id} {...item} />
-      ))}
-    </div>
-  );
+const TasksList = ({ items }) => {
+  return items.map((item) => <Task key={item.id} {...item} />);
 };
 
-List.propTypes = {
+TasksList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -28,4 +21,4 @@ const mapStateToProps = (state) => ({
   items: state.items || [],
 });
 
-export default connect(mapStateToProps, null)(List);
+export default connect(mapStateToProps, null)(TasksList);

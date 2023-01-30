@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { toggleTask } from '../actions';
+import { toggleTask } from '../../actions';
 import { connect } from 'react-redux';
-import './../styles/index.css';
 
-const Item = ({ completed, text, id, toggleTask }) => {
+import styles from './index.module.css';
+
+const Task = ({ completed, text, id, toggleTask }) => {
   return (
     <div
-      className="container__item"
+      className={styles.item}
       onClick={() => toggleTask(completed, id)}
       style={{
         textDecoration: completed ? 'line-through' : 'none',
@@ -18,7 +19,7 @@ const Item = ({ completed, text, id, toggleTask }) => {
   );
 };
 
-Item.propTypes = {
+Task.propTypes = {
   completed: PropTypes.bool.isRequired,
   text: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
@@ -33,4 +34,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   null,
   mapDispatchToProps
-)(Item);
+)(Task);

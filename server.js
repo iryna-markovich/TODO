@@ -1,10 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import fs from 'file-system';
+import fs from 'fs/promises';
 
 const app = express();
 const dataFile = './items.json';
-const db = JSON.parse(fs.readFileSync('./items.json', 'utf8'));
+const db = JSON.parse(await fs.readFile('./items.json', 'utf8'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

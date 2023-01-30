@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createStore, applyMiddleware, compose } from 'redux';
 import items from './reducers/items.js';
-import App from './components/App.jsx';
+import App from './App.jsx';
 
 const initialState = {
   items: [],

@@ -1,11 +1,7 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getTasks } from '../actions';
-import Controls from './Controls.jsx';
-import Field from './Field.jsx';
-import List from './List.jsx';
-
-import './../styles/index.css';
+import { getTasks } from '../../actions';
+import { Controls, Field, TasksList } from '../../components';
 
 const Tasks = ({ items, getTasks }) => {
   useEffect(() => {
@@ -16,7 +12,7 @@ const Tasks = ({ items, getTasks }) => {
     <>
       <Controls />
       <Field />
-      <List items={items} />
+      <TasksList items={items} />
     </>
   );
 };
@@ -29,7 +25,4 @@ const mapDispatchToProps = (dispatch) => ({
   getTasks: () => dispatch(getTasks()),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Tasks);
+export default connect(mapStateToProps, mapDispatchToProps)(Tasks);

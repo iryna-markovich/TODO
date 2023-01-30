@@ -1,0 +1,16 @@
+.controls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+
+.subtitle {
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 500px) {
+  .controls {
+    flex-direction: column;
+  }
+}

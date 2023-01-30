@@ -1,17 +1,18 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Tasks from './Tasks.jsx';
+import { Container, Tasks } from './containers';
+import { Title, Line } from './components';
 
 const App = () => (
-  <div className="container">
-    <h1 className="container__title">It's a simple TODOList</h1>
-    <hr className="container__line" />
+  <Container>
+    <Title>It's a simple TODOList</Title>
+    <Line />
     <BrowserRouter>
       <Routes>
         <Route exact path="/:filter?" element={<Tasks />} />
       </Routes>
     </BrowserRouter>
-  </div>
+  </Container>
 );
 
 export default App;
