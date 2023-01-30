@@ -1,81 +1,66 @@
-import { v4 } from "node-uuid";
-
-export const updateTask = completed => ({
-  type: "UPDATE_TASK",
-  completed
+export const updateTask = (completed) => ({
+  type: 'UPDATE_TASK',
+  completed,
 });
 
 export const deleteTasks = () => ({
-  type: "DELETE_TASKS"
+  type: 'DELETE_TASKS',
 });
 
-export const getTask = id => ({
-  type: "GET_TASK",
-  id
+export const getTask = (id) => ({
+  type: 'GET_TASK',
+  id,
 });
 
-export const getTasks = () => dispatch => {
-  fetch("/api/items")
-    .then(response => response.json())
-    .then(data => {
+export const getTasks = () => (dispatch) => {
+  fetch('/api/items')
+    .then((response) => response.json())
+    .then((data) => {
       dispatch({
-        type: "GET_TASKS",
-        items: data.items
+        type: 'GET_TASKS',
+        items: data.items,
       });
     });
 };
 
 export const putTask = (data, dispatch) => {
   let task = {
-    id: v4(),
     text: data,
-    completed: false
+    completed: false,
   };
-  fetch("/api/items", {
+  fetch('/api/items', {
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-    method: "post",
-    body: JSON.stringify(task)
+    method: 'post',
+    body: JSON.stringify(task),
   })
-    .then(function(response) {
-      return response;
-    })
-    .then(function() {
-      getTasks()(dispatch);
-    });
+    .then((response) => response)
+    .then(() => getTasks()(dispatch));
 };
 
 export const removeTasks = (dispatch) => {
-  fetch("/api/items", {
-    method: "delete"
+  fetch('/api/items', {
+    method: 'delete',
   })
-    .then(function(response) {
-      return response;
-    })
-    .then(function() {
-      getTasks()(dispatch);
-    });
+    .then((response) => response)
+    .then(() => getTasks()(dispatch));
 };
 
 export const toggleTask = (completed, id, dispatch) => {
   let task = {
     completed: !completed,
-    id: id
+    id: id,
   };
-  fetch("/api/items", {
+  fetch('/api/items', {
     headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     },
-    method: "put",
-    body: JSON.stringify(task)
+    method: 'put',
+    body: JSON.stringify(task),
   })
-    .then(function(response) {
-      return response;
-    })
-    .then(function() {
-      getTasks()(dispatch);
-    });
+    .then((response) => response)
+    .then(() => getTasks()(dispatch));
 };
