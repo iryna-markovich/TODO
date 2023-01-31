@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterLink from '../../containers/FilterLink.jsx';
-import { removeTasks } from '../../actions';
+import * as actions from '../../actions';
 import { connect } from 'react-redux';
 import { Button } from '../../components';
 
@@ -25,12 +25,8 @@ const Controls = ({ removeTasks }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  items: state.items,
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  removeTasks: () => removeTasks(dispatch),
+  removeTasks: () => dispatch(actions.removeTasks()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Controls);
+export default connect(null, mapDispatchToProps)(Controls);

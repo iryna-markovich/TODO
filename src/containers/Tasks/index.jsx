@@ -1,28 +1,14 @@
-import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { getTasks } from '../../actions';
+import React from 'react';
 import { Controls, Field, TasksList } from '../../components';
 
-const Tasks = ({ items, getTasks }) => {
-  useEffect(() => {
-    getTasks();
-  }, []);
-
+const Tasks = () => {
   return (
     <>
       <Controls />
       <Field />
-      <TasksList items={items} />
+      <TasksList />
     </>
   );
 };
 
-const mapStateToProps = (state) => ({
-  items: state.items || [],
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getTasks: () => dispatch(getTasks()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Tasks);
+export default Tasks;

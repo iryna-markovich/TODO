@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { putTask } from '../../actions';
+import * as actions from '../../actions';
 import { Button } from '../../components';
 
 import styles from './index.module.css';
 
-const Field = ({ putTask }) => {
+const Field = ({ addTask }) => {
   const [inputValue, setInputValue] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     if (inputValue.trim()) {
-      putTask(inputValue);
+      addTask(inputValue);
 
       setInputValue('');
     }
@@ -33,12 +33,9 @@ const Field = ({ putTask }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  items: state.items,
-});
 
 const mapDispatchToProps = (dispatch) => ({
-  putTask: (text) => putTask(text, dispatch),
+  addTask: (text) => dispatch(actions.addTask(text)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Field);
+export default connect(null, mapDispatchToProps)(Field);
